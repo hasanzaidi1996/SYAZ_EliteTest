@@ -10,7 +10,7 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductCard } from "../ProductCard/ProductCard";
 import classes from "./AllProducts.module.css";
 import axios from "axios";
@@ -23,28 +23,48 @@ export function AllProducts() {
   const [email, setEmail] = useState("");
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      title: "Product Management Tool",
-      description:
-        "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
-      price: "$200",
-    },
-    {
-      title: "Inventory Management Product",
-      description:
-        "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
-      price: "$200",
-    },
-    {
-      title: "Hospital Management System",
-      description:
-        "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
-      price: "$200",
-    },
-  ];
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Make a GET request using Axios
+        const response = await axios.get("http://localhost:3000/products");
+        console.log(response.data.products);
+        setProducts(response.data.products);
+      } catch (error) {
+        // setError(error);
+        console.log(error);
+      } finally {
+        // setLoading(false);
+        console.log("finally");
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // const products = [
+  //   {
+  //     title: "Product Management Tool",
+  //     description:
+  //       "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
+  //     price: "$200",
+  //   },
+  //   {
+  //     title: "Inventory Management Product",
+  //     description:
+  //       "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
+  //     price: "$200",
+  //   },
+  //   {
+  //     title: "Hospital Management System",
+  //     description:
+  //       "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
+  //     price: "$200",
+  //   },
+  // ];
+  const emailRegex = /\S+@\S+\.\S+/;
   const submitRating = async () => {
     if (!name) {
       setNameError("Please enter your name");
@@ -148,7 +168,7 @@ export function AllProducts() {
               ever
             </Text>
             <Grid pt="xl" align="center" justify="center">
-              {products.map((product, index) => {
+              {products?.map((product, index) => {
                 return (
                   <Grid.Col span={{ base: 12, md: 6, lg: 4 }} key={index}>
                     <Center>
