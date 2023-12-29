@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Container, Group, Burger, Image, Drawer } from "@mantine/core";
+import { Container, Group, Burger, Image, Drawer, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./MyAppHeader.module.css";
+import { useNavigate } from "react-router-dom";
 
 const links = [
   { link: "/", label: "Home" },
@@ -9,22 +10,18 @@ const links = [
 ];
 
 const MyAppHeader = () => {
+  const navigate = useNavigate();
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  // const [active, setActive] = useState(links[0].link);
 
   const items = links.map((link) => (
-    <a
+    <Text
       key={link.label}
-      href={link.link}
       className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
+      onClick={() => navigate(link.link)}
     >
       {link.label}
-    </a>
+    </Text>
   ));
 
   return (
