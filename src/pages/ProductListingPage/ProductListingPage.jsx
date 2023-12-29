@@ -9,59 +9,70 @@ import {
 import classes from "./ProductListingPage.module.css";
 import { HeroHeader } from "../../components/HeroHeader/HeroHeader";
 import ProductsTable from "../../components/ProductsTable.jsx/ProductsTable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductListingPage = () => {
-  const elements = [
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-    {
-      name: "Brad Simmons",
-      email: "bradsimons@gmail.com",
-      productName: "Inventory Management System",
-      rating: 5,
-    },
-  ];
+  const [elements, setElements] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://bit.ly/2mTM3nY",
+    }).then((response) => {
+      setElements(response.data);
+    });
+  }, []);
+
+  // const elements = [
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  //   {
+  //     name: "Brad Simmons",
+  //     email: "bradsimons@gmail.com",
+  //     productName: "Inventory Management System",
+  //     rating: 5,
+  //   },
+  // ];
 
   //make pagination logic
   const [activePage, setActivePage] = useState(1);

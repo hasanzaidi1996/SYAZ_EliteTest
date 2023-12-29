@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { Container, Group, Burger, Image, Drawer, Text } from "@mantine/core";
+import { Burger, Container, Drawer, Group, Image, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import classes from "./MyAppHeader.module.css";
 import { useNavigate } from "react-router-dom";
+import classes from "./MyAppHeader.module.css";
 
 const links = [
   { link: "/", label: "Home" },
