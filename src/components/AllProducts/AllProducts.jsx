@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { ProductCard } from "../ProductCard/ProductCard";
 import classes from "./AllProducts.module.css";
+import axios from "axios";
 
 export function AllProducts() {
   const [value, setValue] = useState(0);
@@ -25,28 +26,33 @@ export function AllProducts() {
 
   const products = [
     {
-      title: "Product 1",
+      title: "Product Management Tool",
       description:
         "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
-      price: "$10.00",
+      price: "$200",
     },
     {
-      title: "Product 2",
+      title: "Inventory Management Product",
       description:
         "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
-      price: "$20.00",
+      price: "$200",
     },
     {
-      title: "Product 3",
+      title: "Hospital Management System",
       description:
         "Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum. Lorem Ipsum has been the industry's standard the dummy text ever Lorem Ipsum...",
-      price: "$30.00",
+      price: "$200",
     },
   ];
-  const submitRating = () => {
-    if (!name || !email) {
-      if (!name) setNameError("Please enter your name");
-      if (!email) setEmailError("Please enter your email");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const submitRating = async () => {
+    if (!name) {
+      setNameError("Please enter your name");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email address");
       return;
     }
 
@@ -56,12 +62,25 @@ export function AllProducts() {
       rating: value,
       productName: currentProduct.title,
     };
+    try {
+      // Make a POST request using Axios
+      const response = await axios.post(
+        "http://localhost:3000/productListing",
+        data
+      );
+      console(response.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log("finally");
+    }
+
     setEmail("");
     setName("");
     setValue(0);
     setModalOpened(false);
 
-    console.log(data);
+    // console.log(data);
   };
   return (
     <Container size="1360px">

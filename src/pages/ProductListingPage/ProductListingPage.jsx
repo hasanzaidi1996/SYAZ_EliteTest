@@ -15,12 +15,23 @@ import axios from "axios";
 const ProductListingPage = () => {
   const [elements, setElements] = useState([]);
   useEffect(() => {
-    axios({
-      method: "get",
-      url: "http://bit.ly/2mTM3nY",
-    }).then((response) => {
-      setElements(response.data);
-    });
+    const fetchData = async () => {
+      try {
+        // Make a GET request using Axios
+        const response = await axios.get(
+          "http://localhost:3000/productListing"
+        );
+        setElements(response.data.productListing);
+      } catch (error) {
+        // setError(error);
+        console.log(error);
+      } finally {
+        // setLoading(false);
+        console.log("finally");
+      }
+    };
+
+    fetchData();
   }, []);
 
   // const elements = [
