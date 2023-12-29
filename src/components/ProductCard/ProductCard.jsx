@@ -26,7 +26,9 @@ export const ProductCard = ({ product, setValue, value }) => {
         <Rating value={value} onChange={setValue} size={25} />
       </Group>
       <Center mt="xl">
-        <Button className={classes.button} size="lg">Show Details</Button>
+        <Button className={classes.button} size="lg">
+          Show Details
+        </Button>
       </Center>
     </Paper>
   );

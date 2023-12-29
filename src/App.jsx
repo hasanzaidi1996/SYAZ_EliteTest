@@ -4,6 +4,9 @@ import "@mantine/core/styles.css";
 
 import { MantineProvider } from "@mantine/core";
 import { MyAppShell } from "./components/MyAppShell/MyAppShell";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import ProductListingPage from "./pages/ProductListingPage/ProductListingPage";
 
 export default function App() {
   return (
@@ -12,7 +15,12 @@ export default function App() {
         fontFamily: "Inter, sans-serif",
       }}
     >
-      <MyAppShell />
+      <Routes>
+        <Route element={<MyAppShell />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/listing" element={<ProductListingPage />} />
+        </Route>
+      </Routes>
     </MantineProvider>
   );
 }
