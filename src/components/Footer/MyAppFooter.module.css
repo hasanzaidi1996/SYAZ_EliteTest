@@ -1,0 +1,57 @@
+.wrapper {
+    background-color: #010C29;
+    border-radius: 0;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    opacity: 0.9;
+}
+
+.title {
+    color: #fff;
+    font-size: 29px;
+    font-weight: 700;
+}
+
+.question {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.title2 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.icon {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.input {
+    background-color: #010C29;
+    border-radius: 0;
+    color: #01113c;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.button {
+    background-color: #942D3B;
+    border-radius: 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1rem;
+    /* width: 100%; */
+    margin-top: 1rem;
+}
+
+.phone {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 1rem;
+}

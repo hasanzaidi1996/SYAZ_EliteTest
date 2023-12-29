@@ -1,0 +1,17 @@
+.wrapper {
+    background-color: #19284E;
+    border-radius: 0;
+    height: 60.72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* opacity: 0.9; */
+}
+
+.text {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 300;
+    opacity: 0.7;
+    align-items: center;
+}

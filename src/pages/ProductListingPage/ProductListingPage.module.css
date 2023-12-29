@@ -1,0 +1,15 @@
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #19284E;
+    padding-bottom: 20px;
+}
+
+.wrapper {
+    background-color: #fff;
+    position: relative;
+    top: -50px;
+    z-Index: 10;
+    padding: 50px 100px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
