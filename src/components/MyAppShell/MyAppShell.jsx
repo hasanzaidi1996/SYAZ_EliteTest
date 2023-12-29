@@ -1,7 +1,7 @@
 import { AppShell } from "@mantine/core";
 import { Outlet } from "react-router-dom";
-import MyAppFooter from "../Footer/myAppFooter";
-import MyAppHeader from "../Header/myAppHeader";
+import MyAppFooter from "../Footer/MyAppFooter";
+import MyAppHeader from "../Header/MyAppHeader";
 import RightsFooter from "../RightsFooter/RightsFooter";
 
 export const MyAppShell = () => {
